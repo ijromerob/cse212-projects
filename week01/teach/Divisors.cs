@@ -14,11 +14,25 @@ public static class Divisors {
     /// and excluding the number itself. Modulo will be used
     /// to test divisibility.
     /// </summary>
-    /// <param name="number">The number to find the divisor</param>
+    /// <param name number>The number to find the divisor</param>
     /// <returns>List of divisors</returns>
-    private static List<int> FindDivisors(int number) {
+    private static List<int> FindDivisors(int number)
+    {
         List<int> results = new();
         // TODO problem 1
+        var potentialDivisors = new int[number-1];
+        for (var index =0; index < number-1 ; ++index)
+        {
+          potentialDivisors[index] = index + 1;
+        }
+
+        foreach(var item in potentialDivisors)
+        {
+          if(number % item == 0){
+            results.Add(item);
+          }
+        }
+
         return results;
     }
 }
