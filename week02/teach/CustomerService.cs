@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// Maintain a Customer Service Queue.  Allows new customers to be 
+/// Maintain a Customer Service Queue.  Allows new customers to be
 /// added and allows customers to be serviced.
 /// </summary>
 public class CustomerService {
@@ -11,24 +11,70 @@ public class CustomerService {
         // Test Cases
 
         // Test 1
-        // Scenario: 
-        // Expected Result: 
+        // Scenario: invalid amount (less than or equal to 0) default size 10 add a new customer
+        // Expected Result: Service Queue initial amount 10
         Console.WriteLine("Test 1");
 
-        // Defect(s) Found: 
+        // Defect(s) Found:
+        var newCustomerService = new CustomerService(0);
+
+        Console.WriteLine(newCustomerService._maxSize == 10);
+
 
         Console.WriteLine("=================");
 
         // Test 2
-        // Scenario: 
-        // Expected Result: 
+        // Scenario:adding new customers
+        // Expected Result: if the size of the queue is 1
         Console.WriteLine("Test 2");
 
-        // Defect(s) Found: 
+        // // Defect(s) Found:
+        newCustomerService.AddNewCustomer();
+        Console.WriteLine(newCustomerService._queue.Count == 1);
 
         Console.WriteLine("=================");
 
-        // Add more Test Cases As Needed Below
+
+        // Test 3
+        // Scenario:adding new customers
+        // Expected Result: if the size of the queue is 1
+        Console.WriteLine("Test 3");
+
+        var newCustomerService1 = new CustomerService(0);
+
+        // Defect(s) Found:
+        newCustomerService1.AddNewCustomer();
+        Console.WriteLine(newCustomerService1._queue.Count == 1);
+
+        newCustomerService1.ServeCustomer();
+        Console.WriteLine(newCustomerService1._queue.Count == 0);
+
+
+        Console.WriteLine("=================");
+
+
+        // Test 3
+        // Scenario:adding 11 new customers
+        // Expected Result: Error
+        Console.WriteLine("Test 3");
+
+        // Defect(s) Found:
+
+        // var secondCustomerService = new CustomerService(0);
+
+        // for (int i = 1; i<= 10 ; i++)
+        // {
+        //   secondCustomerService.AddNewCustomer();
+        // }
+
+        // Console.WriteLine("The queue has 10 customers");
+        // Console.WriteLine(secondCustomerService._queue.Count == 10);
+
+        // secondCustomerService.AddNewCustomer();
+        // Console.WriteLine("The queue has 10 customers after the error");
+        // Console.WriteLine(secondCustomerService._queue.Count == 10);
+
+        // Console.WriteLine("=================");
     }
 
     private readonly List<Customer> _queue = new();
@@ -62,7 +108,7 @@ public class CustomerService {
     }
 
     /// <summary>
-    /// Prompt the user for the customer and problem information.  Put the 
+    /// Prompt the user for the customer and problem information.  Put the
     /// new record into the queue.
     /// </summary>
     private void AddNewCustomer() {
@@ -95,7 +141,7 @@ public class CustomerService {
 
     /// <summary>
     /// Support the WriteLine function to provide a string representation of the
-    /// customer service queue object. This is useful for debugging. If you have a 
+    /// customer service queue object. This is useful for debugging. If you have a
     /// CustomerService object called cs, then you run Console.WriteLine(cs) to
     /// see the contents.
     /// </summary>
