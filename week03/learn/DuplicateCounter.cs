@@ -24,7 +24,26 @@
 
     private static int CountDuplicates(int[] data)
     {
-        // Add code here.
-        return 0;
+      // A new set is created
+      HashSet<int> normalSet = new HashSet<int>();
+      int  duplicatesCount = 0;
+      // The data is moved to the set aka hashed
+      for (var i = 0; i < data.Length ; i++){
+        // iterates on each number in the list
+        var number = data[i];
+
+        // Checks if the number is already in the normal count
+        // If the number is not inside, it is added
+        if(!normalSet.Contains(number))
+        {
+          normalSet.Add(number);
+        }
+        // Checks if it is already in the duplicate set
+        else
+        {
+          duplicatesCount++;
+        }
+      }
+        return duplicatesCount;
     }
 }
