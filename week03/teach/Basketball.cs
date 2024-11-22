@@ -1,13 +1,13 @@
 ﻿/*
- * CSE 212 Lesson 6C 
- * 
+ * CSE 212 Lesson 6C
+ *
  * This code will analyze the NBA basketball data and create a table showing
  * the players with the top 10 career points.
- * 
+ *
  * Note about columns:
  * - Player ID is in column 0
  * - Points is in column 8
- * 
+ *
  * Each row represents the player's stats for a single season with a single team.
  */
 
@@ -27,10 +27,22 @@ public class Basketball
             var fields = reader.ReadFields()!;
             var playerId = fields[0];
             var points = int.Parse(fields[8]);
+
+            if (!players.ContainsKey(playerId)) {
+                players[playerId] = points;
+            }
+
+            players[playerId] += points;
+
+
         }
 
-        Console.WriteLine($"Players: {{{string.Join(", ", players)}}}");
+        var ordered = players.OrderByDescending(x => x.Value).Take(10);
+
+        Console.WriteLine($"Players: {{{string.Join(", ", ordered)}}}");
 
         var topPlayers = new string[10];
+
+
     }
 }

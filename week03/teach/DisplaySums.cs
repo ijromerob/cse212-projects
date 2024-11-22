@@ -5,7 +5,7 @@
         // 6 4
         // 7 3
         // 8 2
-        // 9 1 
+        // 9 1
 
         Console.WriteLine("------------");
         DisplaySumPairs([-20, -15, -10, -5, 0, 5, 10, 15, 20]);
@@ -28,6 +28,19 @@
     /// </summary>
     /// <param name="numbers">array of integers</param>
     private static void DisplaySumPairs(int[] numbers) {
-        // TODO Problem 2 - This should print pairs of numbers in the given array
+        var seenNumbers = new HashSet<int>();
+        var targetSum = 10;
+
+        foreach (var num in numbers) // 1 , 2, 3 ,4 , 5 ,6 , 7
+        {
+            int complement = targetSum - num; //10 - 7 = 3
+            if (seenNumbers.Contains(complement)) // 4
+            {
+                Console.WriteLine($"{complement} {num}"); // 6 + 4 = 10
+            }
+
+            seenNumbers.Add(num);
+        }
     }
 }
+
